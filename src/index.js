@@ -1,9 +1,13 @@
 'use strict';
 
+import Preview from './Preview/preview';
+import React from 'react';
+
 const { memoize } = require('cerebro-tools');
 const debounceP = require('debounce-promise');
 const Constants = require('./constants');
 const icon = require('./assets/youtube.png');
+const channelIcon = require('./assets/channel.png');
 const search = debounceP(memoize(require('./youtube').search, Constants.CACHE_OPTIONS), Constants.DEBOUNCE_TIME);
 
 const displayError = (display, hide) => {
@@ -29,6 +33,7 @@ const displayResult = (display, hide, actions, query, videos) => {
     },
   }];
   results = results.concat(videos.map((item) => {
+    const isVideo = !!item.description;
     return {
       icon,
       title: item.title,
@@ -56,7 +61,7 @@ const handleInput = (term, display, hide, actions) => {
       subtitle: 'Patience is key!',
     });
 
-    search(query)
+    search(query, 10)
       .then(videos => displayResult(display, hide, actions, query, videos))
       .catch(() => displayError(display, hide));
   }

@@ -8,5 +8,6 @@ module.exports = {
     promise: 'then',
   },
   YOUTUBE_URL: 'https://youtube.com',
-  YOUTUBE_SEARCH_URL: `https://youtube.com/results?search_query=`,
+  YOUTUBE_SEARCH_URL: 'https://youtube.com/results?search_query=',
+  YOUTUBE_VIDEO_THUMBNAIL: id => `https://img.youtube.com/vi/${id}/mqdefault.jpg`,
 };
