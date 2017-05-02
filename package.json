@@ -19,7 +19,8 @@
   "keywords": [
     "cerebro",
     "cerebro-plugin",
-    "youtube"
+    "youtube",
+    "cerebro-youtube"
   ],
   "devDependencies": {
     "babel-cli": "^6.18.0",

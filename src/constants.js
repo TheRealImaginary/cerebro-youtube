@@ -6,5 +6,7 @@ module.exports = {
   CACHE_OPTIONS: {
     CACHE_TIME: 1800000, // ms 30mins
     promise: 'then',
-  }
+  },
+  YOUTUBE_URL: 'https://youtube.com',
+  YOUTUBE_SEARCH_URL: `https://youtube.com/results?search_query=`,
 };

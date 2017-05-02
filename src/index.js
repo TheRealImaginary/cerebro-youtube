@@ -15,9 +15,20 @@ const displayError = (display, hide) => {
   });
 };
 
-const displayResult = (display, hide, actions, videos) => {
+const displayResult = (display, hide, actions, query, videos) => {
   hide(2);
-  const results = videos.map((item) => {
+  const searchUrl = `${Constants.YOUTUBE_SEARCH_URL}${query}`;
+  let results = [{
+    icon,
+    title: 'More Results',
+    subtitle: 'Open more results in browser',
+    clipboard: searchUrl,
+    onSelect() {
+      actions.open(searchUrl);
+      actions.hideWindow();
+    },
+  }];
+  results = results.concat(videos.map((item) => {
     return {
       icon,
       title: item.title,
@@ -28,7 +39,7 @@ const displayResult = (display, hide, actions, videos) => {
         actions.hideWindow();
       },
     }
-  });
+  }));
   display(results);
 };
 
@@ -46,19 +57,19 @@ const handleInput = (term, display, hide, actions) => {
     });
 
     search(query)
-      .then(videos => displayResult(display, hide, actions, videos))
+      .then(videos => displayResult(display, hide, actions, query, videos))
       .catch(() => displayError(display, hide));
   }
 };
 
 const fn = ({ term, display, hide, actions }) => {
-  if (term.startsWith(Constants.PREFIX)) {
+  if (term.trim().startsWith(Constants.PREFIX)) {
     display({
       icon,
       id: 1,
       title: 'YouTube',
       subtitle: 'Write a term to search for!',
-      clipboard: 'https://youtube.com',
+      clipboard: Constants.YOUTUBE_URL,
     });
     handleInput(term, display, hide, actions);
   }
