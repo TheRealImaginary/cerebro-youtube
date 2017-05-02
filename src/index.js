@@ -1,8 +1,5 @@
 'use strict';
 
-import Preview from './Preview/preview';
-import React from 'react';
-
 const { memoize } = require('cerebro-tools');
 const debounceP = require('debounce-promise');
 const Constants = require('./constants');
@@ -35,7 +32,7 @@ const displayResult = (display, hide, actions, query, videos) => {
   results = results.concat(videos.map((item) => {
     const isVideo = !!item.description;
     return {
-      icon,
+      icon: isVideo ? Constants.YOUTUBE_VIDEO_THUMBNAIL(item.id) : icon,
       title: item.title,
       subtitle: item.description ? item.description : item.url,
       clipboard: item.url,
@@ -61,7 +58,7 @@ const handleInput = (term, display, hide, actions) => {
       subtitle: 'Patience is key!',
     });
 
-    search(query, 10)
+    search(query, 12)
       .then(videos => displayResult(display, hide, actions, query, videos))
       .catch(() => displayError(display, hide));
   }
