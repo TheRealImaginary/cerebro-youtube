@@ -1,14 +1,10 @@
 {
-  "name": "cerebro-plugin",
+  "name": "cerebro-youtube",
   "version": "1.0.0",
-  "description": "",
+  "description": "A Simple YouTube search plugin for Cerebro App",
   "license": "MIT",
-  "repository": "KELiON/cerebro-plugin",
-  "author": {
-    "name": "Alexandr Subbotin",
-    "email": "kelionweb@gmail.com",
-    "url": "asubbotin.ru"
-  },
+  "repository": "TheRealImaginary/cerebro-youtube",
+  "author": "Mazen Magdy",
   "engines": {
     "node": ">=4"
   },
@@ -22,7 +18,8 @@
   "main": "dist/index.js",
   "keywords": [
     "cerebro",
-    "cerebro-plugin"
+    "cerebro-plugin",
+    "youtube"
   ],
   "devDependencies": {
     "babel-cli": "^6.18.0",
