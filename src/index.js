@@ -1,11 +1,11 @@
 'use strict';
 
 const debounceP = require('debounce-promise');
+const Constants = require('./constants');
 const icon = require('./assets/youtube.png');
-const search = debounceP(require('./youtube.js').search, 200);
+const search = debounceP(require('./youtube').search, 200);
 
-const displayError = (display, hide, err) => {
-  console.log(err);
+const displayError = (display, hide) => {
   hide(2);
   display({
     icon,
@@ -32,7 +32,7 @@ const displayResult = (display, hide, actions, videos) => {
 };
 
 const handleInput = (term, display, hide, actions) => {
-  let query = term.substring(2);
+  let query = term.substring(Constants.PREFIX.length);
   if (!query || query.trim().length === 0) {
     return;
   } else {
@@ -45,13 +45,13 @@ const handleInput = (term, display, hide, actions) => {
     });
 
     search(query)
-      .then((videos) => displayResult(display, hide, actions, videos))
-      .catch((err) => displayError(display, hide, err));
+      .then(videos => displayResult(display, hide, actions, videos))
+      .catch(() => displayError(display, hide));
   }
 };
 
 const fn = ({ term, display, hide, actions }) => {
-  if (term.startsWith('yt')) {
+  if (term.startsWith(Constants.PREFIX)) {
     display({
       icon,
       id: 1,
@@ -63,5 +63,8 @@ const fn = ({ term, display, hide, actions }) => {
 };
 
 module.exports = {
-  fn
+  name: Constants.name,
+  keyword: Constants.PREFIX,
+  fn,
+  icon,
 };
