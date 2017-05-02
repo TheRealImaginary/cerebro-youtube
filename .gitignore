@@ -35,3 +35,12 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
+
+# Yarn dependecies lock file
+yarn.lock
+
+# Application local files
+dist
+
+# Custom
+test
