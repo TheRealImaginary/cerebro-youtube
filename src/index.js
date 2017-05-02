@@ -20,7 +20,7 @@ const displayResult = (display, hide, actions, videos) => {
     return {
       icon,
       title: item.title,
-      subtitle: item.type === 'video' ? item.description : item.url,
+      subtitle: item.description ? item.description : item.url,
       clipboard: item.url,
       onSelect() {
         actions.open(item.url);
