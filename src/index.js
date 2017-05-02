@@ -1,9 +1,10 @@
 'use strict';
 
+const { memoize } = require('cerebro-tools');
 const debounceP = require('debounce-promise');
 const Constants = require('./constants');
 const icon = require('./assets/youtube.png');
-const search = debounceP(require('./youtube').search, 200);
+const search = debounceP(memoize(require('./youtube').search, Constants.CACHE_OPTIONS), Constants.DEBOUNCE_TIME);
 
 const displayError = (display, hide) => {
   hide(2);
@@ -57,6 +58,7 @@ const fn = ({ term, display, hide, actions }) => {
       id: 1,
       title: 'YouTube',
       subtitle: 'Write a term to search for!',
+      clipboard: 'https://youtube.com',
     });
     handleInput(term, display, hide, actions);
   }
@@ -65,6 +67,6 @@ const fn = ({ term, display, hide, actions }) => {
 module.exports = {
   name: Constants.name,
   keyword: Constants.PREFIX,
-  fn,
   icon,
+  fn,
 };
