@@ -6,7 +6,7 @@
 
 ## Usage
 
-In Cerebro, type `YT QUERY`. A List of videos and channels will appear. You can click on any to open in browser.
+In Cerebro, type `YT QUERY`. A List of videos and channels will appear. You can click on any to open in browser or you can use `Ctrl+C` to copy link to clipboard.
 
 ## Related
 
