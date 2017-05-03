@@ -1,4 +1,4 @@
-# Cerebro YouTube
+# Cerebro YouTube [![npm](https://img.shields.io/npm/v/cerebro-youtube.svg)](https://www.npmjs.com/package/cerebro-youtube)
 
 > A Cerebro Plugin for searching YouTube
 
